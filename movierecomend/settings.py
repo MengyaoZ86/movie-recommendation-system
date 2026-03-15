@@ -24,7 +24,13 @@ SECRET_KEY = '3r8%azo4sf)2yvl-!pa!lav)ao^6$_eoc_8bhmf-f8!^wypb)!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['movie1.colaplusice.com', 'localhost', '127.0.0.1', '192.168.0.102']
+ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.replit.dev',
+    'https://*.repl.co',
+    'https://*.replit.app',
+]
 
 # Application definitionauth_user_user_permissions
 
