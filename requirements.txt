@@ -8,7 +8,7 @@ bleach==4.1.0
 blinker==1.9.0
 bootstrap4==0.1.0
 certifi==2021.5.30
-cffi==2.0.0
+cffi>=1.15
 charset-normalizer==2.0.4
 click==8.3.1
 colorama==0.4.4
@@ -93,8 +93,6 @@ pyspark==4.0.1
 python-dateutil==2.8.2
 python-decouple==3.4
 pytz==2021.1
-pywin32==303
-pywinpty==1.1.6
 pyzmq==22.3.0
 qtconsole==5.2.2
 QtPy==2.0.0
