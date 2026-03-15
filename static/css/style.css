@@ -535,7 +535,7 @@ article .art-content ol {
     background-color: #000;
 }
 
-.widget .wid-header h5 {
+.widget .wid-header h2 {
     font-size: 22px;
     display: inline-block;
     padding: 15px 0;
@@ -598,7 +598,7 @@ article .art-content ol {
     max-width: 130px;
 }
 
-.widget.wid-post h6 {
+.widget.wid-post .recommend-title {
     color: #fcab2b;
 }
 
@@ -620,7 +620,7 @@ article .art-content ol {
     max-width: 130px;
 }
 
-.widget.wid-last-updates h6 {
+.widget.wid-last-updates .recommend-title {
     color: #fcab2b;
     width: 200px;
     overflow: hidden;

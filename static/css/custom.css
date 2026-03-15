@@ -1,18 +1,14 @@
 .movie-info li {
     margin-top: 15px;
-
 }
 
 #confirm-modal >*{
     color: black;
-!important;
 }
 
 .modal-dialog{
     width: 300px;
 }
-
-
 
 footer {
     margin-top: 40px;
@@ -24,7 +20,6 @@ footer {
 
 a .btn {
     color: white;
-!important;
 }
 
 a:visited {
@@ -33,7 +28,6 @@ a:visited {
 
 .bg-yellow > * {
     color: #fcab2b;
-!important;
 }
 
 .avartar img {
@@ -83,4 +77,65 @@ a:visited {
     margin-top: auto;
     margin-bottom: auto;
     display: block;
+}
+
+/* Screen-reader only utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Logo h1 - keep same visual appearance */
+.logo-title {
+    font-size: 33px;
+    font-family: sans-serif;
+    font-weight: normal;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+.logo-title a {
+    color: white;
+}
+
+/* Fix color contrast for select text (#777 -> #595959) */
+select {
+    color: #595959;
+}
+
+header #login input[type="text"],
+header #search input[type="text"] {
+    color: #595959;
+}
+
+/* Collected count and user rating - styled as prominent text */
+.collected-count {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline;
+    color: #fff;
+}
+
+.user-rating {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fcab2b;
+}
+
+/* Recommend title in sidebar */
+.recommend-title {
+    color: #fcab2b;
+    font-size: 16px;
+    margin: 0;
+    width: 200px;
+    overflow: hidden;
 }

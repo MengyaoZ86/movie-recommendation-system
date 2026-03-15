@@ -3,19 +3,19 @@
     <div class="wrap-content">
         <div class="movie">
             <div class="title">
-                <center><h2>{{ title }}</h2>
-                    <form method="post" action="{% url 'index' %}" class="form-inline" style="display:inline;float: right; margin-top: 10px; margin-right: 15px">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <select onchange="this.form.submit()" name="order">
-                                <option value="nums" id="nums" disabled selected>By popularity</option>
-                                <option value="collect" id="collect">By collection</option>
-                                <option value="rate" id="rate">By rating</option>
-                                <option value="years" id="years">By date</option>
-                            </select>
-                        </div>
-                    </form>
-                </center>
+                <h2 style="display:inline-block">{{ title }}</h2>
+                <form method="post" action="{% url 'index' %}" class="form-inline" style="display:inline;float: right; margin-top: 10px; margin-right: 15px">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="order-select" class="sr-only">Sort movies by</label>
+                        <select id="order-select" onchange="this.form.submit()" name="order">
+                            <option value="nums" id="nums" disabled selected>By popularity</option>
+                            <option value="collect" id="collect">By collection</option>
+                            <option value="rate" id="rate">By rating</option>
+                            <option value="years" id="years">By date</option>
+                        </select>
+                    </div>
+                </form>
             </div>
             <div class="row">
                 {% for movie in movies %}
@@ -73,8 +73,6 @@
         } else if (title === 'By date') {
             $('#years').attr('disabled',true).attr('selected',true);
         }
-
-
     </script>
 
 {% endblock %}

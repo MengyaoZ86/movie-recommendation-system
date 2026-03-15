@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <title>Movie Recommendation System</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/zerogrid.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -22,15 +22,16 @@
                 <div class="col-1-2">
                     <div class="wrap-col">
                         <div class="logo" style="font-size: 33px;padding: 16px 0;font-family: sans-serif; ">
-                            <a href="{% url 'index' %}">Movie Recommendation System</a>
+                            <h1 class="logo-title"><a href="{% url 'index' %}">Movie Recommendation System</a></h1>
                         </div>
                     </div>
                 </div>
                 <div class="col-1-2">
                     <div class="wrap-col f-right">
-                        <form method="post" action="{% url 'search' %}" id="search">
+                        <form method="post" action="{% url 'search' %}" id="search" role="search">
                             {% csrf_token %}
-                            <input name="search" type="text" size="40" placeholder="Search..."/>
+                            <label for="search-input" class="sr-only">Search movies</label>
+                            <input id="search-input" name="search" type="text" size="40" placeholder="Search..."/>
                             <input type="submit" value="Search">
                         </form>
                     </div>
@@ -38,7 +39,7 @@
             </div>
             <div class="row">
                 <div id="menu">
-                    <nav>
+                    <nav aria-label="Main navigation">
                         <div class="wrap-nav">
                             <ul>
                                 <li class="active"><a href="{% url 'index' %}">Home</a></li>
@@ -60,16 +61,16 @@
     <!--////////////////////////////////////Container-->
     <section id="container">
         <div class="wrap-container zerogrid">
-            <div id="main-content" class="col-2-3">
+            <main id="main-content" class="col-2-3">
                 {% block main_content %}
                 {% endblock %}
-            </div>
-            <div id="sidebar" class="col-1-3">
+            </main>
+            <aside id="sidebar" class="col-1-3">
                 <div class="wrap-sidebar">
                     <!---- Start Widget ---->
                     <div class="widget wid-new-updates">
                         <div class="wid-header">
-                            <h5>Latest</h5>
+                            <h2>Latest</h2>
                         </div>
                         <div class="wid-content">
                             <ul id="latest-movie"></ul>
@@ -80,7 +81,7 @@
                         <div class="wid-header">
                             <div class="row">
                                 <div class="col-md-9">
-                                    <h5>User-based recommendations</h5>
+                                    <h2>User-based recommendations</h2>
                                 </div>
                                 <div class="col-md-3">
                                     <a style="color: white" onclick="get_user_recommend()" href="#" class="btn btn-warning">Refresh</a>
@@ -90,7 +91,7 @@
                         <div class="wid-content" id="user-recommend"></div>
                     </div>
                 </div>
-            </div>
+            </aside>
         </div>
     </section>
     <!--////////////////////////////////////Footer-->
@@ -106,7 +107,6 @@
 </div>
 <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 <script src="{% static "/js/bootstrap.min.js" %}"></script>
-{#<script src="{% static 'js/css3-mediaqueries.js' %}"></script>#}
 {% block bottom-js %}
 {% endblock %}
 <script>
@@ -125,13 +125,12 @@
                 for (var i = 0; i < array_length; i++) {
                     const movieUrl = movieDetailBase + result[i].id;
                     html += `<div class="post">\n` +
-                        `<div class="wrapper"><a href="${movieUrl}"><h6>${result[i].name}</h6></a>`
+                        `<div class="wrapper"><a href="${movieUrl}"><p class="recommend-title">${result[i].name}</p></a>`
                         + `<p> ${result[i].years}</p>`
                         + `<a href="${movieUrl}">Rating ${result[i].d_rate}</a>\n</div>`
                     ;
                 }
                 $('#user-recommend').html(html);
-                {#console.log(html);#}
             },
             fail: function (xhr, textStatus, errorThrown) {
                 alert('request failed');

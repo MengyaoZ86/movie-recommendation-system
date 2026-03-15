@@ -37,9 +37,8 @@
                                                 <a class="btn-lg btn-primary" style="display: inline-block" href="{% url 'collect' movie.id %}">Collect</a>{% endif %}
                                         </div>
                                         <div class="col-1-3">
-                                            <h2 style="display: inline"> Collected: {{ movie.collect.count }} </h2>
+                                            <p class="collected-count"> Collected: {{ movie.collect.count }} </p>
                                         </div>
-                                        {#                                            <a style="display: inline-block" class="btn-lg btn-primary" href="{% url 'collect' movie.id %}">收藏</a>#}
                                     </div>
                                 <li>
                                 </li>
@@ -48,12 +47,12 @@
                                 </li>
                                 <li style="margin-top: 20px">
                                     {% if user_rate is not None %}
-                                        <h4>Your rating: {{ user_rate.mark }}</h4>
+                                        <p class="user-rating">Your rating: {{ user_rate.mark }}</p>
                                     {% else %}
                                         <form action="{% url 'score' movie.id %}" method="post">
                                             {% csrf_token %}
-                                            <p style="display: inline-block;"> Add rating</p>
-                                            <select name="score">
+                                            <label for="score-select" style="display: inline-block; margin-right: 5px;">Add rating</label>
+                                            <select id="score-select" name="score">
                                                 <option>1.0</option>
                                                 <option>2.0</option>
                                                 <option>3.0</option>
@@ -64,16 +63,15 @@
                                         </form>
                                     {% endif %}
                                 </li>
-                                                            <div class="clear"></div>
-
+                                <div class="clear"></div>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-                        <div class="clear"></div>
+            <div class="clear"></div>
             <div class="art-content">
-                                <div class="clear"></div>
+                <div class="clear"></div>
                 <p>{{ movie.intro }}</p>
                 <div class="clear"></div>
             </div>
@@ -82,7 +80,7 @@
             <div class="wid-header">
                 <div class="row">
                     <div class="col-md-9">
-                        <h5>Item-based recommendations</h5>
+                        <h2>Item-based recommendations</h2>
                     </div>
                     <div class="col-md-3">
                         <button class="button bt1" onclick="get_item_recommend()">Refresh</button>
@@ -104,8 +102,8 @@
                     <label for="comment">Add a comment</label>
                     <textarea id="comment" placeholder="Add a comment..." class="form-control" name="comment" rows="3"></textarea>
                 </div>
-                                    <div class="form-group">
-                                        <button type="submit" style="float: right;" class="btn-lg btn-success">Submit</button>
+                    <div class="form-group">
+                        <button type="submit" style="float: right;" class="btn-lg btn-success">Submit</button>
                     </div>
                 </form>
             </div>
@@ -120,11 +118,7 @@
                                         <p>{{ i.content }}</p>
                                         {{ i.user.username }} · {{ i.create_time }}
                                     </div>
-                                    {#                                    {% if  i.user | is_like:i.user.id %}#}
-                                    {#                                        <a href="{% url 'unlike_comment' i.id movie.id %}" class="recommend-link"><span class="fa fa-lg fa-thumbs-up"#}
-                                    {#                                    {% else %}#}
                                     <a href="{% url 'like_comment' i.id movie.id %}" class="recommend-link"><span class="fa fa-lg fa-thumbs-up">({{ i.likecomment_set.count }})</span></a>
-                                    {#                                    {% endif %}#}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -147,8 +141,8 @@
                     var array_length = result.length;
                     for (var i = 0; i < array_length; i++) {
                         html += `<div class="col-1-3"><div class="wrap-col">` +
-                            `<a href="/movie/${result[i].id}"><img src="${result[i].image_link}"/></a>` +
-                            `<a href="/movie/${result[i].id}"><h4>${result[i].name}</h4></a></div></div>`;
+                            `<a href="/movie/${result[i].id}"><img src="${result[i].image_link}" alt="${result[i].name}"/></a>` +
+                            `<a href="/movie/${result[i].id}"><p class="recommend-title">${result[i].name}</p></a></div></div>`;
                     }
                     $('#item-recommend').html(html);
                 },
